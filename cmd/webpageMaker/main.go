@@ -79,9 +79,10 @@ func main() {
 			fmt.Printf("problem when writing to output file: %s\n", err)
 			os.Exit(1)
 		}
+	} else {
+		fmt.Printf(beginningOfHTMLFile)
+		fmt.Println(htmlOutput)
+		fmt.Printf(endOfHTMLFile)
 	}
 
-	fmt.Printf(beginningOfHTMLFile)
-	fmt.Println(htmlOutput)
-	fmt.Printf(endOfHTMLFile)
 }
