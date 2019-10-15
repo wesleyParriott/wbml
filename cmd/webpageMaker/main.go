@@ -74,7 +74,7 @@ func main() {
 
 	if OutputFilePath != "" {
 		TotalOutput := []byte(beginningOfHTMLFile + htmlOutput + endOfHTMLFile)
-		err = ioutil.WriteFile(OutputFilePath, TotalOutput, 777)
+		err = ioutil.WriteFile(OutputFilePath, TotalOutput, 775)
 		if err != nil {
 			fmt.Printf("problem when writing to output file: %s\n", err)
 			os.Exit(1)
