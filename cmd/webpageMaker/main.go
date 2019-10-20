@@ -42,6 +42,16 @@ func main() {
 		fmt.Println("")
 		PrintUsage()
 	}
+	if WbmlFilePath == OutputFilePath {
+		fmt.Println("The output file is the same as the input file!")
+		fmt.Printf("The input file received: %s\nThe outputfile: %s\n", WbmlFilePath, OutputFilePath)
+		os.Exit(1)
+	}
+	if !strings.Contains(WbmlFilePath, ".wbml") {
+		fmt.Println("given a non wbml as input")
+		fmt.Printf("file give: %s\n", WbmlFilePath)
+		os.Exit(1)
+	}
 
 	wbmlFilePathSplit := strings.Split(WbmlFilePath, "/")
 	wbmlFileName := wbmlFilePathSplit[len(wbmlFilePathSplit)-1]
