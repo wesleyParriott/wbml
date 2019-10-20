@@ -7,6 +7,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/tdewolff/minify"
+	"github.com/tdewolff/minify/css"
 	"wbml"
 )
 
@@ -58,14 +60,23 @@ func main() {
 
 	var beginningOfHTMLFile string
 	if CssFilePath != "" {
+		m := minify.New()
+		m.AddFunc("text/css", css.Minify)
+
 		cssFileContentsBytes, err := ioutil.ReadFile(CssFilePath)
 		if err != nil {
 			fmt.Printf("error when reading file: %s\n", err)
 			os.Exit(1)
 		}
-		cssFileContentsString := string(cssFileContentsBytes)
 
-		beginningOfHTMLFile = fmt.Sprintf("<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>%s</title>\n\t<style>%s</style>\n</head>\n<body>\n", wbmlFileName, cssFileContentsString)
+		minifiedCssBytes, err := m.Bytes("text/css", cssFileContentsBytes)
+		if err != nil {
+			fmt.Printf("failed on minification: %s\n", err)
+			os.Exit(1)
+		}
+		minifiedCssString := string(minifiedCssBytes)
+
+		beginningOfHTMLFile = fmt.Sprintf("<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>%s</title>\n\t<style>\n\t\t%s\n\t</style>\n</head>\n<body>\n", wbmlFileName, minifiedCssString)
 	} else {
 		beginningOfHTMLFile = fmt.Sprintf("<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>%s</title>\n</head>\n<body>\n", wbmlFileName)
 	}
