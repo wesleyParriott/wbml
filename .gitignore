@@ -11,8 +11,11 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# the cmd binary files
+# Extra cmd files
 cmd/webpageMaker/webpageMaker
+cmd/webpageMaker/*.wbml
+cmd/webpageMaker/*.html
+cmd/webpageMaker/*.css
 
 ### VIM STUFF ###
 
