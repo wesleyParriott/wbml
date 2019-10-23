@@ -66,13 +66,13 @@ A paragraph with _italicized_ text
 `
 
 func TestLex(t *testing.T) {
-	initParserGlobals()
+	InitParserGlobals()
 	tokStream := lex(strings.NewReader(testPattern))
 	printTokens(tokStream)
 }
 
 func TestParse(t *testing.T) {
-	initParserGlobals()
+	InitParserGlobals()
 	ret := ParseToHtml(testPattern)
 	t.Logf("%s\n", ret)
 }
