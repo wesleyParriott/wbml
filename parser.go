@@ -57,7 +57,7 @@ func isNewline(b byte) (ret bool) {
 }
 
 func isPlain(b byte) (ret bool) {
-	return (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || (b == '.') || (b == ',') || (b == '\'') || (b >= '0' && b <= '9') || (b == ' ')
+	return (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || (b == '.') || (b == ',') || (b == '\'') || (b >= '0' && b <= '9') || (b == ' ') || (b == '?')
 }
 
 func lex(inputStream *strings.Reader) []Token {

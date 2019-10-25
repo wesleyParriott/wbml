@@ -60,7 +60,7 @@ A paragraph with *bold* text
 A paragraph with _italicized_ text
 # this is quoted text
 : this is some code\(\)
-\!\#\:\(\)
+\!\#\:\(\)?
 ;ENDOFARTICLE;
 !New Article
 `
