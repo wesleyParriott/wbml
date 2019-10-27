@@ -2,8 +2,10 @@ package wbml
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
 	"testing"
+	"time"
 )
 
 // TODO pass in testing.T for logging
@@ -74,5 +76,22 @@ func TestLex(t *testing.T) {
 func TestParse(t *testing.T) {
 	InitParserGlobals()
 	ret := ParseToHtml(testPattern)
+	t.Logf("%s\n", ret)
+}
+
+func TestBadFuzzer(t *testing.T) {
+	// TODO
+	testSymbols := `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+	~!@#$%^&*()-=_+;'":[]{}|\,.<>`
+	testString := ""
+
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < 256; i++ {
+		testString = testString + string(testSymbols[rand.Intn(len(testSymbols))])
+	}
+
+	InitParserGlobals()
+	ret := ParseToHtml(string(testString))
+
 	t.Logf("%s\n", ret)
 }
