@@ -62,6 +62,7 @@ A paragraph with *bold* text
 A paragraph with _italicized_ text
 # this is quoted text
 : this is some code\(\)
+_you're inside a thing with a slash \?_
 \!\#\:\(\)?
 ;ENDOFARTICLE;
 !New Article
